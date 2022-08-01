@@ -1,0 +1,74 @@
+@import "../../styles/variables";
+
+.HomePage {
+  align-items: center;
+  display: grid;
+  grid: "content" auto "footer" min-content;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+  text-align: center;
+
+  &-Content {
+    grid-area: content;
+  }
+
+  &-Logo {
+    animation-duration: 266ms;
+    animation-iteration-count: infinite;
+    animation-name: logo;
+    animation-timing-function: linear;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    height: 128px;
+    image-rendering: pixelated;
+    width: 128px;
+  }
+
+  &-Title {
+    color: $triforce-orange;
+    font-size: 4em;
+  }
+
+  &-Description {
+    font-size: 2em;
+  }
+
+  &-Author {
+    color: $gray;
+    font-size: 1em;
+    margin-top: 1rem;
+  }
+
+  &-Footer {
+    grid-area: footer;
+  }
+
+  &-FooterLinkContainer {
+    align-self: center;
+    display: inline-flex;
+    gap: 2rem;
+    grid-area: footer;
+  }
+
+  &-FooterLink {
+    color: $gray !important;
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &-FooterLinkLogo {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+}
+
+@keyframes logo {
+  0% {
+    background-image: url(../../assets/images/zelda-1-triforce-orange.png);
+  }
+  100% {
+    background-image: url(../../assets/images/zelda-1-triforce-blue.png);
+  }
+}

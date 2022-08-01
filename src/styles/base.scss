@@ -1,0 +1,43 @@
+@import "./_variables";
+@import "./_mixins";
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  font-family: "Noto Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $white;
+  background-color: $black;
+  font-size: $base-font-size;
+}
+
+code {
+  font-family: "Noto Sans Mono", monospace;
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+  margin: 0;
+}
