@@ -8,10 +8,16 @@ const HomePage: React.FC = () => {
   return (
     <div className="HomePage">
       <main className="HomePage-Content">
-        <div className="HomePage-Logo" title="We have bacon!" />
+        <div className="HomePage-Logo" title="We have bacon!">
+          <p className="HomePage-AlphaPreview">
+            Alpha
+            <br />
+            preview!
+          </p>
+        </div>
         <h1 className="HomePage-Title">Gannon&apos;s Bane</h1>
         <h2 className="HomePage-Description">A browser-based tracker for Zelda 1 Randomizer</h2>
-        <h3 className="HomePage-Author">Authored by Nathan Alden, Sr.</h3>
+        <p className="HomePage-Author">Authored by Nathan Alden, Sr.</p>
       </main>
       <footer className="HomePage-Footer">
         <div className="HomePage-FooterLinkContainer">

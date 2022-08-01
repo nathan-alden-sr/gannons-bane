@@ -6,10 +6,8 @@
   outline: none;
 }
 
-html,
-body {
-  height: 100%;
-  overflow-x: hidden;
+a {
+  text-decoration: none;
 }
 
 body {
@@ -28,10 +26,6 @@ code {
   font-weight: normal;
 }
 
-a {
-  text-decoration: none;
-}
-
 h1,
 h2,
 h3,
@@ -39,5 +33,15 @@ h4,
 h5,
 h6 {
   font-weight: normal;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+p {
   margin: 0;
 }

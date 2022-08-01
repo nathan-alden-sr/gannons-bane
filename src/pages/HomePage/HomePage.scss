@@ -23,11 +23,26 @@
     display: inline-block;
     height: 128px;
     image-rendering: pixelated;
+    position: relative;
     width: 128px;
   }
 
+  &-AlphaPreview {
+    animation-duration: 2s;
+    animation-name: alpha-preview;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    color: $zelda-1-triforce-blue;
+    font-size: 1em;
+    font-weight: bold;
+    position: absolute;
+    text-shadow: 0 0 5px black;
+    top: 35%;
+    right: -60%;
+  }
+
   &-Title {
-    color: $triforce-orange;
+    color: $zelda-1-triforce-orange;
     font-size: 4em;
     margin-top: 2rem;
   }
@@ -40,7 +55,7 @@
   &-Author {
     color: $gray;
     font-size: 1em;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 
   &-Footer {
@@ -72,5 +87,20 @@
   }
   100% {
     background-image: url(../../assets/images/zelda-1-triforce-blue.png);
+  }
+}
+
+@keyframes alpha-preview {
+  0% {
+    rotate: 10deg;
+    scale: 1;
+  }
+  50% {
+    rotate: 15deg;
+    scale: 1.2;
+  }
+  100% {
+    rotate: 10deg;
+    scale: 1;
   }
 }
