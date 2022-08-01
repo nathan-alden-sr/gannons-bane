@@ -11,10 +11,6 @@
   text-align: center;
 
   &-LinkDeathImage {
-    background-image: url(../../assets/images/zelda-1-link-death.gif);
-    background-repeat: no-repeat;
-    background-size: cover;
-
     image-rendering: pixelated;
 
     @include with-breakpoint("phone-only") {
@@ -46,9 +42,6 @@
   }
 
   &-HeartImage {
-    background-image: url(../../assets/images/zelda-1-heart.png);
-    background-repeat: no-repeat;
-    background-size: contain;
     display: inline-block;
     height: 16px;
     image-rendering: pixelated;

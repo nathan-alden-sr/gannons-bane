@@ -1,5 +1,6 @@
 import React from "react";
 import "./HomePage.scss";
+import Zelda1GannonTriforce from "../../assets/images/zelda-1-gannon-triforce.gif";
 import { ReactComponent as DiscordWhiteImage } from "../../assets/images/discord-white.svg";
 import { ReactComponent as GitHubWhiteImage } from "../../assets/images/github-white.svg";
 
@@ -7,7 +8,8 @@ const HomePage: React.FC = () => {
   return (
     <div className="HomePage">
       <main className="HomePage-Content">
-        <div className="HomePage-Logo" title="We have bacon!">
+        <div className="HomePage-LogoContainer">
+          <img className="HomePage-Logo" src={Zelda1GannonTriforce} title="We have bacon!"></img>
           <p className="HomePage-AlphaPreview">
             Alpha
             <br />

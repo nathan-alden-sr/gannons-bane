@@ -53,7 +53,7 @@
     "defaults",
     "not IE 11"
   ],
-  "homepage": "https://gannonsbane.nathanalden.com/",
+  "homepage": "https://gannonsbane.nathanalden.com",
   "postcss": {
     "plugins": {
       "autoprefixer": {}

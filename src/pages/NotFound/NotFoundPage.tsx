@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./NotFoundPage.scss";
 import RouteUrls from "../../resources/RouteUrls";
+import Zelda1HeartImage from "../../assets/images/zelda-1-heart.png";
+import Zelda1LinkDeathImage from "../../assets/images/zelda-1-link-death.gif";
 
 const NotFoundPage: React.FC = () => {
   /*
@@ -10,10 +12,10 @@ const NotFoundPage: React.FC = () => {
    */
   return (
     <div className="NotFoundPage">
-      <div className="NotFoundPage-LinkDeathImage" />
+      <img className="NotFoundPage-LinkDeathImage" src={Zelda1LinkDeathImage} />
       <h1 className="NotFoundPage-Message">The page you requested could not be found.</h1>
       <Link className="NotFoundPage-ContinueLink" to={RouteUrls.homePage}>
-        <div className="NotFoundPage-HeartImage" />
+        <img className="NotFoundPage-HeartImage" src={Zelda1HeartImage} />
         <span className="NotFoundPage-ContinueText">Continue</span>
       </Link>
     </div>

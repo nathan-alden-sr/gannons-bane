@@ -13,16 +13,13 @@
     grid-area: content;
   }
 
-  &-Logo {
-    animation-duration: 266ms;
-    animation-iteration-count: infinite;
-    animation-name: logo;
-    animation-timing-function: linear;
-    background-repeat: no-repeat;
-    background-size: cover;
+  &-LogoContainer {
     display: inline-block;
-    image-rendering: pixelated;
     position: relative;
+  }
+
+  &-Logo {
+    image-rendering: pixelated;
 
     @include with-breakpoint("phone-only") {
       height: 64px;
@@ -140,15 +137,6 @@
   &-FooterLinkLogo {
     height: 1.5rem;
     width: 1.5rem;
-  }
-}
-
-@keyframes logo {
-  0% {
-    background-image: url(../../assets/images/zelda-1-triforce-orange.png);
-  }
-  100% {
-    background-image: url(../../assets/images/zelda-1-triforce-blue.png);
   }
 }
 
