@@ -18,21 +18,26 @@ const HomePage: React.FC = () => {
           <a
             className="HomePage-FooterLink"
             href="https://github.com/nathan-alden-sr/gannons-bane"
+            rel="noopener noreferrer nofollow"
             target="_blank"
-            rel="noreferrer"
           >
             <GitHubWhiteImage className="HomePage-FooterLinkLogo" />
             GitHub
           </a>
-          <a className="HomePage-FooterLink" href="https://discord.gg/bkptD9r3" target="_blank" rel="noreferrer">
+          <a
+            className="HomePage-FooterLink"
+            href="https://discord.gg/bkptD9r3"
+            rel="noopener noreferrer nofollow"
+            target="_blank"
+          >
             <DiscordWhiteImage className="HomePage-FooterLinkLogo" />
             Zelda 1 Randomizer Discord
           </a>
           <a
             className="HomePage-FooterLink"
             href="https://z1r.fandom.com/wiki/Zelda_1_Randomizer_Wiki"
+            rel="noopener noreferrer nofollow"
             target="_blank"
-            rel="noreferrer"
           >
             <span className="HomePage-FooterLinkEmoji">📝</span>
             Zelda 1 Randomizer Wiki
