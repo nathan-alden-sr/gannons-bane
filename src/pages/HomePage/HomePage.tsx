@@ -1,8 +1,9 @@
 import React from "react";
 import "./HomePage.scss";
 import Zelda1GannonTriforce from "../../assets/images/zelda-1-gannon-triforce.gif";
-import { ReactComponent as DiscordWhiteImage } from "../../assets/images/discord-white.svg";
 import { ReactComponent as GitHubWhiteImage } from "../../assets/images/github-white.svg";
+import { ReactComponent as DiscordWhiteImage } from "../../assets/images/discord-white.svg";
+import { ReactComponent as FandomImage } from "../../assets/images/fandom.svg";
 
 const HomePage: React.FC = () => {
   return (
@@ -51,7 +52,7 @@ const HomePage: React.FC = () => {
             rel="noopener noreferrer nofollow"
             target="_blank"
           >
-            <span className="HomePage-FooterLinkEmoji">📝</span>
+            <FandomImage className="HomePage-FooterLinkLogo" />
             Zelda 1 Randomizer Wiki
           </a>
         </div>
