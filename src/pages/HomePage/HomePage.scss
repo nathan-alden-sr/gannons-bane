@@ -10,7 +10,18 @@
   text-align: center;
 
   &-Content {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
     grid-area: content;
+
+    @include with-breakpoint("phone-only") {
+      gap: 1.2rem;
+    }
+
+    @include with-breakpoint("tablet-portrait-up") {
+      gap: 1rem;
+    }
   }
 
   &-LogoContainer {
@@ -60,12 +71,10 @@
 
     @include with-breakpoint("phone-only") {
       font-size: 2.5em;
-      margin: 1rem 0;
     }
 
     @include with-breakpoint("tablet-portrait-up") {
       font-size: 4em;
-      margin-top: 2rem;
     }
   }
 
@@ -102,12 +111,29 @@
 
   &-Author {
     color: $gray;
-    font-size: 1em;
+    font-size: 0.8em;
+  }
+
+  &-ButtonContainer {
     margin-top: 2rem;
+  }
+
+  &-StartTrackingButton {
+    align-items: center;
+    display: flex;
+    flex-flow: column;
+    gap: 0.5rem;
+  }
+
+  &-StartTrackingButton-ArrowImage {
+    image-rendering: pixelated;
+    scale: 1;
+    width: 64px;
   }
 
   &-Footer {
     grid-area: footer;
+    margin-top: 1rem;
   }
 
   &-FooterLinkContainer {
@@ -139,6 +165,12 @@
     max-height: 1.5rem;
     max-width: 1.5rem;
     width: auto;
+  }
+
+  .Button {
+    display: inline-flex;
+    font-size: 1.5em;
+    padding: 0.5rem 1rem;
   }
 }
 

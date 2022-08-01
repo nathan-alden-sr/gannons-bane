@@ -1,9 +1,11 @@
 import React from "react";
 import "./HomePage.scss";
 import Zelda1GannonTriforce from "../../assets/images/zelda-1-gannon-triforce.gif";
+import Zelda1ArrowRight from "../../assets/images/zelda-1-arrow-right.png";
 import { ReactComponent as GitHubWhiteImage } from "../../assets/images/github-white.svg";
 import { ReactComponent as DiscordWhiteImage } from "../../assets/images/discord-white.svg";
 import { ReactComponent as FandomImage } from "../../assets/images/fandom.svg";
+import Button, { ButtonTheme } from "../../components/Button";
 
 const HomePage: React.FC = () => {
   return (
@@ -25,6 +27,12 @@ const HomePage: React.FC = () => {
           Zelda 1 Randomizer
         </h2>
         <p className="HomePage-Author">Authored by Nathan Alden, Sr.</p>
+        <div className="HomePage-ButtonContainer">
+          <Button className="HomePage-StartTrackingButton" theme={ButtonTheme.darkGreen}>
+            Start tracking a seed
+            <img className="HomePage-StartTrackingButton-ArrowImage" src={Zelda1ArrowRight} />
+          </Button>
+        </div>
       </main>
       <footer className="HomePage-Footer">
         <div className="HomePage-FooterLinkContainer">
