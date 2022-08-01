@@ -1,1 +1,27 @@
 @import "./_variables";
+
+@mixin with-breakpoint($breakpoint) {
+  @if $breakpoint == "phone-only" {
+    @media (max-width: 599px) {
+      @content;
+    }
+  } @else if $breakpoint == "tablet-portrait-up" {
+    @media (min-width: 600px) {
+      @content;
+    }
+  } @else if $breakpoint == "tablet-landscape-up" {
+    @media (min-width: 900px) {
+      @content;
+    }
+  } @else if $breakpoint == "desktop-up" {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  } @else if $breakpoint == "big-desktop-up" {
+    @media (min-width: 1800px) {
+      @content;
+    }
+  } @else {
+    @warn "Invalid breakpoint: #{$breakpoint}";
+  }
+}

@@ -1,4 +1,4 @@
-@import "../../assets/styles/variables";
+@import "../../assets/styles/_mixins";
 
 .NotFoundPage {
   align-items: center;
@@ -15,9 +15,27 @@
     background-repeat: no-repeat;
     background-size: cover;
 
-    height: 144px;
     image-rendering: pixelated;
-    width: 128px;
+
+    @include with-breakpoint("phone-only") {
+      height: 72px;
+      width: 64px;
+    }
+
+    @include with-breakpoint("tablet-portrait-up") {
+      height: 144px;
+      width: 128px;
+    }
+  }
+
+  &-Message {
+    @include with-breakpoint("phone-only") {
+      font-size: 1.2em;
+    }
+
+    @include with-breakpoint("tablet-portrait-up") {
+      font-size: 2em;
+    }
   }
 
   &-ContinueLink {

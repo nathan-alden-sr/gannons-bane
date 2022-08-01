@@ -1,4 +1,4 @@
-@import "../../assets/styles/variables";
+@import "../../assets/styles/_mixins";
 
 .HomePage {
   align-items: center;
@@ -21,10 +21,18 @@
     background-repeat: no-repeat;
     background-size: cover;
     display: inline-block;
-    height: 128px;
     image-rendering: pixelated;
     position: relative;
-    width: 128px;
+
+    @include with-breakpoint("phone-only") {
+      height: 64px;
+      width: 64px;
+    }
+
+    @include with-breakpoint("tablet-portrait-up") {
+      height: 128px;
+      width: 128px;
+    }
   }
 
   &-AlphaPreview {
@@ -33,29 +41,72 @@
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     color: $zelda-1-triforce-blue;
-    font-size: 1em;
     font-weight: bold;
     position: absolute;
     text-shadow: 0 0 5px black;
-    top: 35%;
-    right: -60%;
+
+    @include with-breakpoint("phone-only") {
+      font-size: 0.8em;
+      top: 25%;
+      right: -100%;
+    }
+
+    @include with-breakpoint("tablet-portrait-up") {
+      font-size: 1em;
+      top: 35%;
+      right: -60%;
+    }
   }
 
   &-Title {
     color: $zelda-1-triforce-orange;
-    font-size: 4em;
-    margin-top: 2rem;
+
+    @include with-breakpoint("phone-only") {
+      font-size: 2.5em;
+      margin: 1rem 0;
+    }
+
+    @include with-breakpoint("tablet-portrait-up") {
+      font-size: 4em;
+      margin-top: 2rem;
+    }
   }
 
   &-Description {
-    font-size: 2em;
+    display: flex;
+    flex-wrap: wrap;
     font-weight: 300;
+    justify-content: center;
+
+    @include with-breakpoint("phone-only") {
+      font-size: 1.2em;
+
+      &_singleLine {
+        display: none;
+      }
+
+      &_multiLine {
+        display: initial;
+      }
+    }
+
+    @include with-breakpoint("tablet-portrait-up") {
+      font-size: 2em;
+
+      &_singleLine {
+        display: initial;
+      }
+
+      &_multiLine {
+        display: none;
+      }
+    }
   }
 
   &-Author {
     color: $gray;
     font-size: 1em;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 
   &-Footer {
@@ -63,16 +114,27 @@
   }
 
   &-FooterLinkContainer {
-    align-self: center;
-    display: inline-flex;
-    gap: 2rem;
-    grid-area: footer;
+    @include with-breakpoint("phone-only") {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include with-breakpoint("tablet-portrait-up") {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+    }
   }
 
   &-FooterLink {
     color: $gray !important;
     display: flex;
     gap: 0.5rem;
+
+    @include with-breakpoint("phone-only") {
+      align-items: center;
+      flex-direction: column;
+    }
   }
 
   &-FooterLinkLogo {

@@ -2,7 +2,6 @@ import React from "react";
 import "./HomePage.scss";
 import { ReactComponent as DiscordWhiteImage } from "../../assets/images/discord-white.svg";
 import { ReactComponent as GitHubWhiteImage } from "../../assets/images/github-white.svg";
-// import Button from "../../components/Button";
 
 const HomePage: React.FC = () => {
   return (
@@ -16,7 +15,12 @@ const HomePage: React.FC = () => {
           </p>
         </div>
         <h1 className="HomePage-Title">Gannon&apos;s Bane</h1>
-        <h2 className="HomePage-Description">A browser-based tracker for Zelda 1 Randomizer</h2>
+        <h2 className="HomePage-Description HomePage-Description_singleLine">A browser-based tracker for Zelda 1 Randomizer</h2>
+        <h2 className="HomePage-Description HomePage-Description_multiLine">
+          A browser-based tracker for
+          <br />
+          Zelda 1 Randomizer
+        </h2>
         <p className="HomePage-Author">Authored by Nathan Alden, Sr.</p>
       </main>
       <footer className="HomePage-Footer">

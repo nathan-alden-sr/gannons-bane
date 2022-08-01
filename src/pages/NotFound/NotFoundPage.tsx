@@ -11,7 +11,7 @@ const NotFoundPage: React.FC = () => {
   return (
     <div className="NotFoundPage">
       <div className="NotFoundPage-LinkDeathImage" />
-      <h1>The page you requested could not be found.</h1>
+      <h1 className="NotFoundPage-Message">The page you requested could not be found.</h1>
       <Link className="NotFoundPage-ContinueLink" to={RouteUrls.homePage}>
         <div className="NotFoundPage-HeartImage" />
         <span className="NotFoundPage-ContinueText">Continue</span>
