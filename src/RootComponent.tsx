@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage/HomePage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import RouteUrls from "./resources/RouteUrls";
-import "./styles/base.scss";
+import "./assets/styles/base.scss";
 
 const RootComponent: React.FC = () => {
   return (
