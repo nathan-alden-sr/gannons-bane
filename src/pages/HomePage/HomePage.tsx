@@ -1,13 +1,21 @@
 import React from "react";
-import "./HomePage.scss";
-import Zelda1GannonTriforce from "../../assets/images/zelda-1-gannon-triforce.gif";
-import Zelda1ArrowRight from "../../assets/images/zelda-1-arrow-right.png";
+import { useNavigate } from "react-router-dom";
+import Button, { ButtonTheme } from "../../components/Button";
+import * as RouteHelper from "../../helpers/RouteHelper";
 import { ReactComponent as GitHubWhiteImage } from "../../assets/images/github-white.svg";
 import { ReactComponent as DiscordWhiteImage } from "../../assets/images/discord-white.svg";
 import { ReactComponent as FandomImage } from "../../assets/images/fandom.svg";
-import Button, { ButtonTheme } from "../../components/Button";
+import Zelda1ArrowRight from "../../assets/images/zelda-1-arrow-right.png";
+import Zelda1GannonTriforce from "../../assets/images/zelda-1-gannon-triforce.gif";
+import "./HomePage.scss";
 
 const HomePage: React.FC = () => {
+  const navigate = useNavigate();
+
+  const startTracking = () => {
+    navigate(RouteHelper.buildTrackedSeedWithNewIdRouteUrl());
+  };
+
   return (
     <div className="HomePage">
       <main className="HomePage-Content">
@@ -28,7 +36,7 @@ const HomePage: React.FC = () => {
         </h2>
         <p className="HomePage-Author">Authored by Nathan Alden, Sr.</p>
         <div className="HomePage-ButtonContainer">
-          <Button className="HomePage-StartTrackingButton" theme={ButtonTheme.darkGreen}>
+          <Button className="HomePage-StartTrackingButton" theme={ButtonTheme.darkGreen} onClick={startTracking}>
             Start tracking a seed
             <img className="HomePage-StartTrackingButton-ArrowImage" src={Zelda1ArrowRight} />
           </Button>

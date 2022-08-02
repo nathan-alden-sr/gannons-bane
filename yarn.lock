@@ -2691,6 +2691,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/nanoid-dictionary@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "@types/nanoid-dictionary@npm:4.2.0"
+  checksum: 8b92bf1f70702dab9e6b1c82e625b4790cc2438a480522074a3b55d86b4f2e2a96c8d4845a60529a3daa5c6377e55a3168be909a9bd6020a3b20205a6ec56c36
+  languageName: node
+  linkType: hard
+
+"@types/nanoid@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/nanoid@npm:3.0.0"
+  dependencies:
+    nanoid: "*"
+  checksum: 6e84d71ce2b8a2e23b20a018249a2e6a1c36b4ea0f45ff0265e8db514010ccf13141d87d6892f35b8e50ca5832d1d04ddc27062b5e69f91db2d5b3c5321c8c56
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:*":
   version: 18.6.1
   resolution: "@types/node@npm:18.6.1"
@@ -2753,6 +2769,15 @@ __metadata:
   dependencies:
     "@types/react": "*"
   checksum: db571047af1a567631758700b9f7d143e566df939cfe5fbf7535347cc0c726a1cdbb5e3f8566d076e54cf708b6c1166689de194a9ba09ee35efc9e1d45911685
+  languageName: node
+  linkType: hard
+
+"@types/react-helmet-async@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@types/react-helmet-async@npm:1.0.3"
+  dependencies:
+    react-helmet-async: "*"
+  checksum: 420a1fcd84027079e736d263e79ee290b98fae955518dc9ce3203da1c11dacd6c8a0045050657b0d473991e3133b050ebc43131fad47ae7c79964a21cd44bacc
   languageName: node
   linkType: hard
 
@@ -6303,9 +6328,12 @@ __metadata:
     "@testing-library/user-event": ^14.3.0
     "@types/jest": ^28.1.6
     "@types/luxon": ^3.0.0
+    "@types/nanoid": ^3.0.0
+    "@types/nanoid-dictionary": ^4.2.0
     "@types/node": ^18.6.2
     "@types/react": ^18.0.15
     "@types/react-dom": ^18.0.6
+    "@types/react-helmet-async": ^1.0.3
     "@types/react-redux": ^7.1.24
     "@typescript-eslint/eslint-plugin": ^5.31.0
     "@typescript-eslint/parser": ^5.31.0
@@ -6317,9 +6345,12 @@ __metadata:
     eslint-plugin-react: ^7.30.1
     eslint-plugin-react-hooks: ^4.6.0
     luxon: ^3.0.1
+    nanoid: ^4.0.0
+    nanoid-dictionary: ^4.3.0
     prettier: ^2.7.1
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-helmet-async: ^1.3.0
     react-redux: ^8.0.2
     react-router-dom: ^6.3.0
     react-scripts: 5.0.1
@@ -6328,7 +6359,6 @@ __metadata:
     sass: ^1.54.0
     sass-loader: ^13.0.2
     typescript: ^4.7.4
-    uuid: ^8.3.2
     web-vitals: ^2.1.4
   languageName: unknown
   linkType: soft
@@ -7015,6 +7045,15 @@ __metadata:
     has: ^1.0.3
     side-channel: ^1.0.4
   checksum: 1944f92e981e47aebc98a88ff0db579fd90543d937806104d0b96557b10c1f170c51fb777b97740a8b6ddeec585fca8c39ae99fd08a8e058dfc8ab70937238bf
+  languageName: node
+  linkType: hard
+
+"invariant@npm:^2.2.4":
+  version: 2.2.4
+  resolution: "invariant@npm:2.2.4"
+  dependencies:
+    loose-envify: ^1.0.0
+  checksum: cc3182d793aad82a8d1f0af697b462939cb46066ec48bbf1707c150ad5fad6406137e91a262022c269702e01621f35ef60269f6c0d7fd178487959809acdfb14
   languageName: node
   linkType: hard
 
@@ -8328,7 +8367,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -8710,6 +8749,22 @@ __metadata:
   bin:
     multicast-dns: cli.js
   checksum: 00b8a57df152d4cd0297946320a94b7c3cdf75a46a2247f32f958a8927dea42958177f9b7fdae69fab2e4e033fb3416881af1f5e9055a3e1542888767139e2fb
+  languageName: node
+  linkType: hard
+
+"nanoid-dictionary@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "nanoid-dictionary@npm:4.3.0"
+  checksum: 254ed606f0ef6cfea6f5b1fcaa69f10d561650c0d2cff8b138290c6abd8cbdc3335be8799d7520b8ad8b598b8a8b2bd774bfea49eac1ddecb222e4d80e558de5
+  languageName: node
+  linkType: hard
+
+"nanoid@npm:*, nanoid@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "nanoid@npm:4.0.0"
+  bin:
+    nanoid: bin/nanoid.js
+  checksum: 7d5946df5c6d383694195b781ae7b5067c149d164ec71e910d6b06676309c3459b68af570b944fb5ecd5065d19df464f05700d141d70bb712ff8ca06642fd8df
   languageName: node
   linkType: hard
 
@@ -10259,7 +10314,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.8.1":
+"prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -10423,6 +10478,29 @@ __metadata:
   version: 6.0.11
   resolution: "react-error-overlay@npm:6.0.11"
   checksum: ce7b44c38fadba9cedd7c095cf39192e632daeccf1d0747292ed524f17dcb056d16bc197ddee5723f9dd888f0b9b19c3b486c430319e30504289b9296f2d2c42
+  languageName: node
+  linkType: hard
+
+"react-fast-compare@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "react-fast-compare@npm:3.2.0"
+  checksum: 8ef272c825ae329f61633ce4ce7f15aa5b84e5214d88bc0823880236e03e985a13195befa2c7a4eda7db3b017dc7985729152d88445823f652403cf36c2b86aa
+  languageName: node
+  linkType: hard
+
+"react-helmet-async@npm:*, react-helmet-async@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "react-helmet-async@npm:1.3.0"
+  dependencies:
+    "@babel/runtime": ^7.12.5
+    invariant: ^2.2.4
+    prop-types: ^15.7.2
+    react-fast-compare: ^3.2.0
+    shallowequal: ^1.1.0
+  peerDependencies:
+    react: ^16.6.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.6.0 || ^17.0.0 || ^18.0.0
+  checksum: 7ca7e47f8af14ea186688b512a87ab912bf6041312b297f92516341b140b3f0f8aedf5a44d226d99e69ed067b0cc106e38aeb9c9b738ffcc63d10721c844db90
   languageName: node
   linkType: hard
 
@@ -11268,6 +11346,13 @@ __metadata:
   version: 1.2.0
   resolution: "setprototypeof@npm:1.2.0"
   checksum: be18cbbf70e7d8097c97f713a2e76edf84e87299b40d085c6bf8b65314e994cc15e2e317727342fa6996e38e1f52c59720b53fe621e2eb593a6847bf0356db89
+  languageName: node
+  linkType: hard
+
+"shallowequal@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "shallowequal@npm:1.1.0"
+  checksum: f4c1de0837f106d2dbbfd5d0720a5d059d1c66b42b580965c8f06bb1db684be8783538b684092648c981294bf817869f743a066538771dbecb293df78f765e00
   languageName: node
   linkType: hard
 
