@@ -1,20 +1,18 @@
-@import "../../assets/styles/_variables";
-
 .Button {
   border-radius: 3px;
   border-style: solid;
   border-width: 3px;
   cursor: pointer;
 
-  &_darkGreen {
-    background-color: $darkGreen;
-    border-color: lighten($darkGreen, 5%);
-    color: white;
+  &_green {
+    background-color: hsl(120, 100%, 10%);
+    border-color: hsl(120, 100%, 20%);
+    color: var(--color-white);
   }
 
   &_white {
-    background-color: white;
-    border-color: gray;
-    color: black;
+    background-color: var(--color-white);
+    border-color: var(--color-gray);
+    color: var(--color-black);
   }
 }

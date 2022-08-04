@@ -36,7 +36,7 @@
 
   &-ContinueLink {
     align-items: center;
-    color: $gray;
+    color: var(--color-gray);
     display: flex;
     gap: 0.5em;
   }

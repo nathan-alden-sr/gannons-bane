@@ -1,8 +1,6 @@
-@import "./_variables";
-
 @mixin with-breakpoint($breakpoint) {
   @if $breakpoint == "phone-only" {
-    @media (max-width: 599px) {
+    @media (max-width: 600px) {
       @content;
     }
   } @else if $breakpoint == "tablet-portrait-up" {

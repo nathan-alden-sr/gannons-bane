@@ -1,19 +1,39 @@
 @import "../../assets/styles/_mixins";
 
+$half-content-width: 400px;
+
 .HomePage {
   align-items: center;
   display: grid;
-  grid: "content" auto "footer" min-content;
-  justify-content: center;
+  grid: "nav" min-content "content" auto "footer" min-content;
   min-height: 100vh;
-  padding: 1rem;
-  text-align: center;
+
+  &-Nav {
+    background-color: hsl(0, 0%, 25%);
+    border-bottom: 1px solid hsl(0, 0%, 35%);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    grid-area: nav;
+
+    @include with-breakpoint("tablet-portrait-up") {
+      padding-left: max(0.5rem, calc(50% - $half-content-width));
+      padding-right: max(0.5rem, calc(50% - $half-content-width));
+    }
+  }
+
+  &-NavTitleLink {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
   &-Content {
     align-items: center;
     display: flex;
     flex-flow: column;
     grid-area: content;
+    margin: 0.5rem max(0.5rem, calc(50% - $half-content-width));
+    text-align: center;
 
     @include with-breakpoint("phone-only") {
       gap: 1.2rem;
@@ -48,10 +68,9 @@
     animation-name: alpha-preview;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    color: $zelda-1-triforce-blue;
+    color: var(--color-zelda-1-triforce-blue);
     font-weight: bold;
     position: absolute;
-    text-shadow: 0 0 5px black;
 
     @include with-breakpoint("phone-only") {
       font-size: 0.8em;
@@ -67,7 +86,7 @@
   }
 
   &-Title {
-    color: $zelda-1-triforce-orange;
+    color: var(--color-zelda-1-triforce-orange);
 
     @include with-breakpoint("phone-only") {
       font-size: 2.5em;
@@ -110,31 +129,33 @@
   }
 
   &-Author {
-    color: $gray;
+    color: var(--color-gray);
     font-size: 0.8em;
-  }
-
-  &-ButtonContainer {
-    margin-top: 2rem;
   }
 
   &-TrackButton {
     align-items: center;
-    display: flex;
+    display: inline-flex;
     flex-flow: column;
+    font-size: 1.5em;
     gap: 0.5rem;
+    padding: 0.5rem 1rem;
     position: relative;
-    transition: all 150ms ease-out;
+    transition: all 150ms ease-in-out;
 
-    &:after {
-      box-shadow: 0 0 30px 0 rgba($zelda-1-triforce-orange, 0.5);
+    @include with-breakpoint("tablet-portrait-up") {
+      margin-top: 1rem;
+    }
+
+    &::after {
+      box-shadow: 0 0 30px 0 var(--color-zelda-1-triforce-orange);
       content: "";
       height: 100%;
       left: 0;
       opacity: 0;
       position: absolute;
       top: 0;
-      transition: opacity 0.3s ease-in-out;
+      transition: opacity 150ms ease-in-out;
       width: 100%;
     }
 
@@ -142,8 +163,8 @@
       transform: scale(1.1);
     }
 
-    &:hover:after {
-      opacity: 1;
+    &:hover::after {
+      opacity: 0.5;
     }
   }
 
@@ -155,7 +176,18 @@
 
   &-Footer {
     grid-area: footer;
-    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+
+    @include with-breakpoint("phone-only") {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+    }
+
+    @include with-breakpoint("tablet-portrait-up") {
+      padding-left: max(0.5rem, calc(50% - $half-content-width));
+      padding-right: max(0.5rem, calc(50% - $half-content-width));
+    }
   }
 
   &-FooterLinkContainer {
@@ -172,7 +204,7 @@
   }
 
   &-FooterLink {
-    color: $gray !important;
+    color: var(--color-gray);
     display: flex;
     gap: 0.5rem;
 
@@ -187,12 +219,6 @@
     max-height: 1.5rem;
     max-width: 1.5rem;
     width: auto;
-  }
-
-  .Button {
-    display: inline-flex;
-    font-size: 1.5em;
-    padding: 0.5rem 1rem;
   }
 }
 

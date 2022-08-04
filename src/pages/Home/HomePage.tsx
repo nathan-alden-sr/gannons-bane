@@ -1,17 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { ButtonTheme } from "../../components/Button/Button";
 import LinkButton from "../../components/LinkButton/LinkButton";
-import * as RouteHelper from "../../helpers/RouteHelper";
+import { buildHomeRouteUrl, buildNewTrackedSeedUrl } from "../../helpers/RouteHelper";
 import { ReactComponent as GitHubWhiteImage } from "../../assets/images/github-white.svg";
 import { ReactComponent as DiscordWhiteImage } from "../../assets/images/discord-white.svg";
 import { ReactComponent as FandomImage } from "../../assets/images/fandom.svg";
 import Zelda1ArrowRight from "../../assets/images/zelda-1-arrow-right.png";
 import Zelda1GannonTriforce from "../../assets/images/zelda-1-gannon-triforce.gif";
+import Zelda1GannonTriforceYellow from "../../assets/images/zelda-1-gannon-triforce-yellow.png";
 import "./HomePage.scss";
 
 const HomePage: React.FC = () => {
   return (
     <div className="HomePage">
+      <nav className="HomePage-Nav">
+        <Link className="HomePage-NavTitleLink" to={buildHomeRouteUrl()}>
+          <img src={Zelda1GannonTriforceYellow} />
+          Home
+        </Link>
+      </nav>
       <main className="HomePage-Content">
         <div className="HomePage-LogoContainer">
           <img className="HomePage-Logo" src={Zelda1GannonTriforce} title="We have bacon!"></img>
@@ -29,17 +37,10 @@ const HomePage: React.FC = () => {
           Zelda 1 Randomizer
         </h2>
         <p className="HomePage-Author">Authored by Nathan Alden, Sr.</p>
-        <div className="HomePage-ButtonContainer">
-          <LinkButton
-            className="HomePage-TrackButton"
-            to={RouteHelper.buildNewTrackedSeedUrl()}
-            target="_blank"
-            theme={ButtonTheme.darkGreen}
-          >
-            Track a Seed
-            <img className="HomePage-TrackButton-ArrowImage" src={Zelda1ArrowRight} />
-          </LinkButton>
-        </div>
+        <LinkButton className="HomePage-TrackButton" to={buildNewTrackedSeedUrl()} target="_blank" theme={ButtonTheme.green}>
+          Track a Seed
+          <img className="HomePage-TrackButton-ArrowImage" src={Zelda1ArrowRight} />
+        </LinkButton>
       </main>
       <footer className="HomePage-Footer">
         <div className="HomePage-FooterLinkContainer">

@@ -1,5 +1,17 @@
-@import "./_variables";
 @import "./_mixins";
+
+:root,
+*::before,
+*::after {
+  --font-size-base: 16px;
+
+  --color-white: hsl(0, 0%, 100%);
+  --color-gray: hsl(0, 0%, 50%);
+  --color-black: hsl(0, 0%, 0%);
+
+  --color-zelda-1-triforce-orange: #ea9e22;
+  --color-zelda-1-triforce-blue: #9290ff;
+}
 
 * {
   box-sizing: border-box;
@@ -7,16 +19,17 @@
 }
 
 a {
+  color: inherit;
   text-decoration: none;
 }
 
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $black;
-  color: $white;
+  background-color: var(--color-black);
+  color: var(--color-white);
   font-family: "Noto Sans", sans-serif; // https://fonts.google.com/noto/specimen/Noto+Sans
-  font-size: $base-font-size;
+  font-size: var(--font-size-base);
   margin: 0;
   min-height: 100vh;
   min-height: -webkit-fill-available;

@@ -1,7 +1,7 @@
 import "./Button.scss";
 
 export const enum ButtonTheme {
-  darkGreen = "darkGreen"
+  green = "green"
 }
 
 type ButtonElement = JSX.IntrinsicElements["button"];
