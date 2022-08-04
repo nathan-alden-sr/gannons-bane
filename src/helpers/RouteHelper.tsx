@@ -1,49 +1,41 @@
 import { Route } from "react-router-dom";
-import { customAlphabet } from "nanoid";
-import { alphanumeric } from "nanoid-dictionary";
-import HomePage from "../pages/HomePage/HomePage";
+import HomePage from "../pages/Home/HomePage";
+import NewTrackedSeedPage from "../pages/NewTrackedSeed/NewTrackedSeedPage";
 import NotFoundPage from "../pages/NotFound/NotFoundPage";
-import TrackedSeedPage from "../pages/TrackPage/TrackedSeedPage";
-import isDefined from "../functions/isDefined";
-
-const idLength = 10;
-const idRegExp = new RegExp(`^[a-z0-9]{${idLength}}$`, "iu");
-const generateId = customAlphabet(alphanumeric, idLength);
+import TrackedSeedPage from "../pages/TrackedSeed/TrackedSeedPage";
 
 // Not found
 
-export function createNotFoundRoute(): React.ReactElement {
+export function createNotFoundRoute() {
   return <Route path="*" element={<NotFoundPage />} />;
 }
 
-// Home
+// /
 
-export function buildHomeRouteUrl(): string {
+export function buildHomeRouteUrl() {
   return "/";
 }
 
-export function createHomeRoute(): React.ReactElement {
+export function createHomeRoute() {
   return <Route path="/" element={<HomePage />} />;
 }
 
-// Tracked seed
+// /tracked-seed/new
 
-export function buildTrackedSeedWithIdRouteUrl(id: string): string {
+export function buildNewTrackedSeedUrl() {
+  return "/tracked-seed/new";
+}
+
+export function createNewTrackedSeedRoute() {
+  return <Route path="/tracked-seed/new" element={<NewTrackedSeedPage />} />;
+}
+
+// /tracked-seed/:id
+
+export function buildTrackedSeedWithIdRouteUrl(id: string) {
   return `/tracked-seed/${id}`;
 }
 
-export function buildTrackedSeedWithNewIdRouteUrl(): string {
-  return buildTrackedSeedWithIdRouteUrl(generateId());
-}
-
-export function createTrackedSeedRoute(): React.ReactElement {
+export function createTrackedSeedRoute() {
   return <Route path="/tracked-seed/:id" element={<TrackedSeedPage />} />;
-}
-
-// Validation
-
-export function isValidId(id: string | undefined | null, allowUndefined: boolean = false): boolean {
-  const isIdDefined = isDefined(id);
-
-  return (!isIdDefined && allowUndefined) || (isIdDefined && idRegExp.test(id));
 }

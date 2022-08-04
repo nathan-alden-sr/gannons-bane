@@ -118,14 +118,14 @@
     margin-top: 2rem;
   }
 
-  &-StartTrackingButton {
+  &-TrackButton {
     align-items: center;
     display: flex;
     flex-flow: column;
     gap: 0.5rem;
   }
 
-  &-StartTrackingButton-ArrowImage {
+  &-TrackButton-ArrowImage {
     image-rendering: pixelated;
     scale: 1;
     width: 64px;

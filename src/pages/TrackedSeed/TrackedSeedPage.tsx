@@ -1,21 +1,22 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
-import * as RouteHelper from "../../helpers/RouteHelper";
+import { isValidId } from "../../helpers/IdHelper";
 import NotFoundPage from "../NotFound/NotFoundPage";
 import "./TrackedSeedPage.scss";
 
 const TrackedSeedPage: React.FC = () => {
   const { id } = useParams();
 
-  if (!RouteHelper.isValidId(id)) {
+  if (!isValidId(id)) {
     return <NotFoundPage />;
   }
 
   return (
-    <div>
+    <>
       <Helmet title={`Tracked Seed: ${id}`} />
-    </div>
+      <div></div>
+    </>
   );
 };
 

@@ -1,13 +1,13 @@
 import "./Button.scss";
 
-export enum ButtonTheme {
+export const enum ButtonTheme {
   darkGreen = "darkGreen"
 }
 
 type ButtonElement = JSX.IntrinsicElements["button"];
 
 export interface ButtonProps extends ButtonElement {
-  theme?: ButtonTheme;
+  theme: ButtonTheme | null;
 }
 
 const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
