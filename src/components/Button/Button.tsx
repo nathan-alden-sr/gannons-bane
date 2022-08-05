@@ -4,9 +4,9 @@ export const enum ButtonTheme {
   green = "green"
 }
 
-type ButtonElement = JSX.IntrinsicElements["button"];
+type ButtonElementProps = JSX.IntrinsicElements["button"];
 
-export interface ButtonProps extends ButtonElement {
+export interface ButtonProps extends ButtonElementProps {
   theme: ButtonTheme | null;
 }
 

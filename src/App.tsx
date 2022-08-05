@@ -16,6 +16,7 @@ const App: React.FC = () => {
           <Routes>
             {RouteHelper.createNotFoundRoute()}
             {RouteHelper.createHomeRoute()}
+            {RouteHelper.createOverworldMapExplorerRoute()}
             {RouteHelper.createNewTrackedSeedRoute()}
             {RouteHelper.createTrackedSeedRoute()}
           </Routes>

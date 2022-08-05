@@ -1,7 +1,5 @@
 @import "../../assets/styles/_mixins";
 
-$half-content-width: 400px;
-
 .HomePage {
   align-items: center;
   display: grid;
@@ -9,27 +7,12 @@ $half-content-width: 400px;
   min-height: 100vh;
 
   &-Nav {
-    background-color: hsl(0, 0%, 25%);
-    border-bottom: 1px solid hsl(0, 0%, 35%);
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
     grid-area: nav;
 
-    @include with-breakpoint("phone-only") {
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-    }
-
     @include with-breakpoint("tablet-portrait-up") {
-      padding-left: max(0.5rem, calc(50% - $half-content-width));
-      padding-right: max(0.5rem, calc(50% - $half-content-width));
+      padding-left: max(0rem, calc(50% - var(--half-content-width)));
+      padding-right: max(0rem, calc(50% - var(--half-content-width)));
     }
-  }
-
-  &-NavTitleLink {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
   }
 
   &-Content {
@@ -39,8 +22,8 @@ $half-content-width: 400px;
     grid-area: content;
     margin-bottom: 2rem;
     margin-top: 1rem;
-    padding-left: max(1rem, calc(50% - $half-content-width));
-    padding-right: max(1rem, calc(50% - $half-content-width));
+    padding-left: max(1rem, calc(50% - var(--half-content-width)));
+    padding-right: max(1rem, calc(50% - var(--half-content-width)));
     text-align: center;
 
     @include with-breakpoint("phone-only") {
@@ -197,8 +180,8 @@ $half-content-width: 400px;
     }
 
     @include with-breakpoint("tablet-portrait-up") {
-      padding-left: max(1rem, calc(50% - $half-content-width));
-      padding-right: max(1rem, calc(50% - $half-content-width));
+      padding-left: max(1rem, calc(50% - var(--half-content-width)));
+      padding-right: max(1rem, calc(50% - var(--half-content-width)));
     }
   }
 

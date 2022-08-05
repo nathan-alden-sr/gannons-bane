@@ -11,6 +11,8 @@
 
   --color-zelda-1-triforce-orange: #ea9e22;
   --color-zelda-1-triforce-blue: #9290ff;
+
+  --half-content-width: 400px;
 }
 
 * {
@@ -53,6 +55,11 @@ h6 {
 
 html {
   height: -webkit-fill-available;
+}
+
+input,
+select {
+  font-size: var(--font-size-base);
 }
 
 p {

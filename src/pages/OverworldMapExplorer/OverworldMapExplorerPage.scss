@@ -1,0 +1,43 @@
+.OverworldMapExplorerPage {
+  display: grid;
+  grid: "nav" min-content "content" auto;
+  min-height: 100vh;
+
+  &-Nav {
+    grid-area: nav;
+  }
+
+  &-Content {
+    grid-area: content;
+  }
+
+  &-Options {
+    padding: 0.5rem;
+  }
+
+  &-MapContainer {
+    aspect-ratio: 4096 / 1408;
+    position: relative;
+    width: 100%;
+  }
+
+  &-OverworldMapImage {
+    display: block;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+  }
+
+  &-TileHighlightImage {
+    display: none;
+  }
+
+  &-Canvas {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}

@@ -2,6 +2,7 @@ import { Route } from "react-router-dom";
 import HomePage from "../pages/Home/HomePage";
 import NewTrackedSeedPage from "../pages/NewTrackedSeed/NewTrackedSeedPage";
 import NotFoundPage from "../pages/NotFound/NotFoundPage";
+import OverworldMapExplorerPage from "../pages/OverworldMapExplorer/OverworldMapExplorerPage";
 import TrackedSeedPage from "../pages/TrackedSeed/TrackedSeedPage";
 
 // Not found
@@ -18,6 +19,16 @@ export function buildHomeRouteUrl() {
 
 export function createHomeRoute() {
   return <Route path="/" element={<HomePage />} />;
+}
+
+// /overworld-map-explorer
+
+export function buildOverworldMapExplorerRouteUrl() {
+  return "/overworld-map-explorer";
+}
+
+export function createOverworldMapExplorerRoute() {
+  return <Route path="/overworld-map-explorer" element={<OverworldMapExplorerPage />} />;
 }
 
 // /tracked-seed/new
