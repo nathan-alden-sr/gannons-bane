@@ -60,7 +60,7 @@ const HomePage: React.FC = () => {
             target="_blank"
           >
             <DiscordWhiteImage className="HomePage-FooterLinkLogo" />
-            Zelda 1 Randomizer Discord
+            Discord
           </a>
           <a
             className="HomePage-FooterLink"
@@ -69,7 +69,7 @@ const HomePage: React.FC = () => {
             target="_blank"
           >
             <FandomImage className="HomePage-FooterLinkLogo" />
-            Zelda 1 Randomizer Wiki
+            Wiki
           </a>
         </div>
       </footer>

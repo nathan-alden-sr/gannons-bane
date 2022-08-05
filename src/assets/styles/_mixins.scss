@@ -1,6 +1,7 @@
 @mixin with-breakpoint($breakpoint) {
   @if $breakpoint == "phone-only" {
-    @media (max-width: 600px) {
+    // Media queries do not support strict inequality
+    @media (max-width: 599.99999px) {
       @content;
     }
   } @else if $breakpoint == "tablet-portrait-up" {

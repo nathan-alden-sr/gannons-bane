@@ -37,7 +37,10 @@ $half-content-width: 400px;
     display: flex;
     flex-flow: column;
     grid-area: content;
-    margin: 0.5rem max(0.5rem, calc(50% - $half-content-width)) 1rem max(0.5rem, calc(50% - $half-content-width));
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    padding-left: max(1rem, calc(50% - $half-content-width));
+    padding-right: max(1rem, calc(50% - $half-content-width));
     text-align: center;
 
     @include with-breakpoint("phone-only") {
@@ -185,7 +188,7 @@ $half-content-width: 400px;
 
   &-Footer {
     grid-area: footer;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     text-align: center;
 
     @include with-breakpoint("phone-only") {
@@ -194,33 +197,21 @@ $half-content-width: 400px;
     }
 
     @include with-breakpoint("tablet-portrait-up") {
-      padding-left: max(0.5rem, calc(50% - $half-content-width));
-      padding-right: max(0.5rem, calc(50% - $half-content-width));
+      padding-left: max(1rem, calc(50% - $half-content-width));
+      padding-right: max(1rem, calc(50% - $half-content-width));
     }
   }
 
   &-FooterLinkContainer {
-    @include with-breakpoint("phone-only") {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    @include with-breakpoint("tablet-portrait-up") {
-      display: flex;
-      gap: 2rem;
-      justify-content: center;
-    }
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
   }
 
   &-FooterLink {
     color: var(--color-gray);
     display: flex;
     gap: 0.5rem;
-
-    @include with-breakpoint("phone-only") {
-      align-items: center;
-      flex-direction: column;
-    }
   }
 
   &-FooterLinkLogo {
