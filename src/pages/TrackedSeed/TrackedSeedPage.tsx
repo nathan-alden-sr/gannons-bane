@@ -1,14 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
-import { isValidId } from "../../helpers/IdHelper";
+import { isValidEntityId } from "../../helpers/IdHelper";
 import NotFoundPage from "../NotFound/NotFoundPage";
 import "./TrackedSeedPage.scss";
 
 const TrackedSeedPage: React.FC = () => {
   const { id } = useParams();
 
-  if (!isValidId(id)) {
+  if (!isValidEntityId(id)) {
     return <NotFoundPage />;
   }
 

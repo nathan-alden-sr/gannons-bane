@@ -2,7 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { isNil } from "lodash-es";
 import Nav from "../../components/Nav/Nav";
+import { usePreloadedImages } from "../../hooks/usePreloadedImages";
+import overworldMapHelper from "../../helpers/OverworldMapHelper";
 import { overworldFeatures } from "../../helpers/ResourceHelper";
+import questHelper from "../../helpers/QuestHelper";
 import overworldMapExplorerTileHighlightBlueImage from "../../assets/images/overworld-map-explorer-tile-highlight-blue.png";
 import overworldMapExplorerTileHighlightCyanImage from "../../assets/images/overworld-map-explorer-tile-highlight-cyan.png";
 import overworldMapExplorerTileHighlightGrayImage from "../../assets/images/overworld-map-explorer-tile-highlight-gray.png";
@@ -17,40 +20,25 @@ import zelda1OverworldMapSecondQuestImage from "../../assets/images/zelda-1-over
 import zelda1OverworldMapMixedQuestImage from "../../assets/images/zelda-1-overworld-map-mixed-quest.png";
 import "./OverworldMapExplorerPage.scss";
 
-const overworldMapSizeInPixels = {
-  width: 4096,
-  height: 1408
-} as const;
-
-const screenSizeInTiles = {
-  width: 16,
-  height: 11
-} as const;
-
-const tileSizeInPixels = {
-  width: 16,
-  height: 16
-} as const;
-
+const preloadedImages = [
+  overworldMapExplorerTileHighlightBlueImage,
+  overworldMapExplorerTileHighlightCyanImage,
+  overworldMapExplorerTileHighlightGrayImage,
+  overworldMapExplorerTileHighlightGreenImage,
+  overworldMapExplorerTileHighlightMagentaImage,
+  overworldMapExplorerTileHighlightOrangeImage,
+  overworldMapExplorerTileHighlightRedImage,
+  overworldMapExplorerTileHighlightWhiteImage,
+  overworldMapExplorerTileHighlightYellowImage,
+  zelda1OverworldMapFirstQuestImage,
+  zelda1OverworldMapSecondQuestImage,
+  zelda1OverworldMapMixedQuestImage
+];
 const features = overworldFeatures();
 
-function tileLocation(screenX: number, screenY: number, tileX: number, tileY: number) {
-  const [x1, y1] = [
-    screenX * screenSizeInTiles.width * tileSizeInPixels.width + tileX * tileSizeInPixels.width,
-    screenY * screenSizeInTiles.height * tileSizeInPixels.height + tileY * tileSizeInPixels.height
-  ];
-  const [x2, y2] = [x1 + tileSizeInPixels.width, y1 + tileSizeInPixels.height];
-
-  return {
-    topLeft: { x: x1, y: y1 },
-    topRight: { x: x2, y: y1 },
-    bottomRight: { x: x2, y: y2 },
-    bottomLeft: { x: x1, y: y2 },
-    center: { x: x1 + tileSizeInPixels.width / 2, y: y1 + tileSizeInPixels.height / 2 }
-  };
-}
-
 const MapExplorerPage: React.FC = () => {
+  usePreloadedImages(preloadedImages);
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const tileHighlightImages = {
     blue: {
@@ -90,7 +78,7 @@ const MapExplorerPage: React.FC = () => {
       imageElementRef: useRef<HTMLImageElement>(null)
     }
   };
-  const tileHighlightImgElementRefsByFeatureType: Record<string, React.RefObject<HTMLImageElement>> = {
+  const tileHighlightImageElementRefsByFeatureType: Record<string, React.RefObject<HTMLImageElement>> = {
     armos: tileHighlightImages.cyan.imageElementRef,
     bomb: tileHighlightImages.blue.imageElementRef,
     candle: tileHighlightImages.red.imageElementRef,
@@ -100,7 +88,12 @@ const MapExplorerPage: React.FC = () => {
     powerBracelet: tileHighlightImages.magenta.imageElementRef,
     raft: tileHighlightImages.orange.imageElementRef,
     recorder: tileHighlightImages.yellow.imageElementRef
-  };
+  } as const;
+  const overworldMapImagesByQuest: Record<string, string> = {
+    first: zelda1OverworldMapFirstQuestImage,
+    second: zelda1OverworldMapSecondQuestImage,
+    mixed: zelda1OverworldMapMixedQuestImage
+  } as const;
 
   const tileHighlightImageElements = Object.entries(tileHighlightImages).map(([key, value]) => {
     return (
@@ -113,23 +106,16 @@ const MapExplorerPage: React.FC = () => {
     );
   });
 
-  const [quest, setQuest] = useState("mixed");
+  const defaultQuest: string = questHelper.quests[0].key;
 
-  let questImageElement;
+  const questOptions = questHelper.quests.map((quest) => (
+    <option key={quest.key} value={quest.key}>
+      {quest.description}
+    </option>
+  ));
 
-  switch (quest) {
-    case "first":
-      questImageElement = zelda1OverworldMapFirstQuestImage;
-      break;
-    case "second":
-      questImageElement = zelda1OverworldMapSecondQuestImage;
-      break;
-    case "mixed":
-      questImageElement = zelda1OverworldMapMixedQuestImage;
-      break;
-    default:
-      throw new Error(`Unexpected quest ${quest}`);
-  }
+  const [quest, setQuest] = useState(defaultQuest);
+  const questImageElement = overworldMapImagesByQuest[quest];
 
   useEffect(() => {
     const canvasContext = canvasRef.current?.getContext("2d");
@@ -138,26 +124,35 @@ const MapExplorerPage: React.FC = () => {
       return;
     }
 
-    canvasContext.clearRect(0, 0, overworldMapSizeInPixels.width, overworldMapSizeInPixels.height);
+    canvasContext.clearRect(0, 0, overworldMapHelper.mapSizeInPixels.width, overworldMapHelper.mapSizeInPixels.height);
 
     features
       .filter((feature) => !isNil(feature.tile) && feature.quests.includes(quest))
       .forEach((feature) => {
-        const imgElementRef = tileHighlightImgElementRefsByFeatureType[feature.type];
+        const imageElementRef = tileHighlightImageElementRefsByFeatureType[feature.type];
 
-        if (isNil(imgElementRef)) {
+        if (isNil(imageElementRef)) {
           console.log(feature.type);
         }
 
-        const imgElement = tileHighlightImgElementRefsByFeatureType[feature.type].current;
+        const imageElement = tileHighlightImageElementRefsByFeatureType[feature.type].current;
 
-        if (isNil(imgElement)) {
+        if (isNil(imageElement)) {
           return;
         }
 
-        const location = tileLocation(feature.screen.x, feature.screen.y, feature.tile!.x, feature.tile!.y);
+        const location = overworldMapHelper.mapTileCoordinateToAbsolutePixelCoordinates(
+          feature.screen.x,
+          feature.screen.y,
+          feature.tile!.x,
+          feature.tile!.y
+        );
 
-        canvasContext.drawImage(imgElement, location.center.x - imgElement.width / 2, location.center.y - imgElement.height / 2);
+        canvasContext.drawImage(
+          imageElement,
+          location.center.x - imageElement.width / 2,
+          location.center.y - imageElement.height / 2
+        );
       });
   });
 
@@ -169,10 +164,8 @@ const MapExplorerPage: React.FC = () => {
         <main className="OverworldMapExplorerPage-Content">
           <div className="OverworldMapExplorerPage-Options">
             <label htmlFor="quest">Quest: </label>
-            <select id="quest" onChange={(event) => setQuest(event.target.value)}>
-              <option value="first">First</option>
-              <option value="second">Second</option>
-              <option value="mixed">Mixed</option>
+            <select id="quest" onChange={(event) => setQuest(event.target.value)} defaultValue={defaultQuest}>
+              {questOptions}
             </select>
           </div>
           <div className="OverworldMapExplorerPage-MapContainer">
@@ -180,8 +173,8 @@ const MapExplorerPage: React.FC = () => {
             <canvas
               className="OverworldMapExplorerPage-Canvas"
               ref={canvasRef}
-              width={overworldMapSizeInPixels.width}
-              height={overworldMapSizeInPixels.height}
+              width={overworldMapHelper.mapSizeInPixels.width}
+              height={overworldMapHelper.mapSizeInPixels.height}
             />
             {tileHighlightImageElements}
           </div>
