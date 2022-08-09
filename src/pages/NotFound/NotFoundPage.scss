@@ -43,9 +43,8 @@
 
   &-HeartImage {
     display: inline-block;
-    height: 16px;
+    height: var(--text-icon-height);
     image-rendering: pixelated;
-    width: 14px;
   }
 
   &-ContinueText {

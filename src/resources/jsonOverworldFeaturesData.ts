@@ -1,17 +1,19 @@
-import overworldFeaturesJson from "../resources/overworld-features.json";
+import json from "./overworld-features.json";
 
-export enum FeatureType {
+export enum JsonOverworldFeatureType {
   armos = "armos",
   bomb = "bomb",
+  candle = "candle",
   graveMarker = "graveMarker",
   item = "item",
   open = "open",
   powerBracelet = "powerBracelet",
+  dock = "dock",
   recorder = "recorder"
 }
 
-interface OverworldFeature {
-  type: string;
+export interface JsonOverworldFeature {
+  type: JsonOverworldFeatureType;
   screen: {
     x: number;
     y: number;
@@ -27,8 +29,8 @@ interface OverworldFeature {
   } | null;
 }
 
-export function overworldFeatures() {
-  const features: OverworldFeature[] = overworldFeaturesJson;
+export default function jsonOverworldFeaturesData() {
+  const features: JsonOverworldFeature[] = json as any;
 
   return features;
 }

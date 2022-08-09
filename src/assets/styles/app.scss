@@ -17,6 +17,12 @@
   --color-zelda-1-triforce-blue: #9290ff;
 
   --half-content-width: 400px;
+
+  --text-icon-width: 1rem;
+  --text-icon-height: 1rem;
+
+  --overworld-map-width-in-pixels: 4096;
+  --overworld-map-height-in-pixels: 1408;
 }
 
 * {
@@ -42,6 +48,14 @@ body {
   position: relative;
 }
 
+button {
+  background-color: transparent;
+  border-width: 0;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
 code {
   font-family: var(--font-family-monospace);
   font-weight: normal;
@@ -59,6 +73,10 @@ h6 {
 
 html {
   height: -webkit-fill-available;
+}
+
+img {
+  display: block;
 }
 
 input,

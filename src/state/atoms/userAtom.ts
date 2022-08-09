@@ -4,10 +4,10 @@ interface User {
   name: string | null;
 }
 
-const defaultUser: User = {
+const defaultValue: User = {
   name: null
 };
 
-const userState = localForageAtom("user", defaultUser);
+const userAtom = localForageAtom("user", defaultValue);
 
-export default userState;
+export default userAtom;

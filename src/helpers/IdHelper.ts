@@ -15,7 +15,7 @@ export function generateEntityId() {
   return entityIdAlphabet();
 }
 
-export function isValidEntityId(id: string | undefined | null, allowUndefined: boolean = false) {
+export function isValidEntityId(id?: string | null, allowUndefined: boolean = false) {
   const isIdDefined = !isNil(id);
 
   return (!isIdDefined && allowUndefined) || (isIdDefined && entityIdRegExp.test(id));

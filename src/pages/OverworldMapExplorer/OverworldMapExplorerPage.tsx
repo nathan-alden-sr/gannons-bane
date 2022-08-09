@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import { useRecoilState } from "recoil";
 import { isNil } from "lodash-es";
 import Nav from "../../components/Nav/Nav";
-import { usePreloadedImages } from "../../hooks/usePreloadedImages";
+import ToggleButton from "../../components/ToggleButton/ToggleButton";
 import overworldMapHelper from "../../helpers/OverworldMapHelper";
-import { overworldFeatures } from "../../helpers/ResourceHelper";
 import questHelper from "../../helpers/QuestHelper";
+import { usePreloadedImages } from "../../hooks/usePreloadedImages";
+import jsonOverworldFeaturesData, { JsonOverworldFeatureType } from "../../resources/jsonOverworldFeaturesData";
+import overworldMapExplorerFeatureAtom from "../../state/atoms/overworldMapExplorerFeatureAtom";
 import overworldMapExplorerTileHighlightBlueImage from "../../assets/images/overworld-map-explorer-tile-highlight-blue.png";
 import overworldMapExplorerTileHighlightCyanImage from "../../assets/images/overworld-map-explorer-tile-highlight-cyan.png";
 import overworldMapExplorerTileHighlightGrayImage from "../../assets/images/overworld-map-explorer-tile-highlight-gray.png";
@@ -34,88 +37,127 @@ const preloadedImages = [
   zelda1OverworldMapSecondQuestImage,
   zelda1OverworldMapMixedQuestImage
 ];
-const features = overworldFeatures();
+const jsonOverworldFeatures = jsonOverworldFeaturesData();
 
-const MapExplorerPage: React.FC = () => {
+const OverworldMapExplorerPage: React.FC = () => {
   usePreloadedImages(preloadedImages);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const tileHighlightImages = {
-    blue: {
-      image: overworldMapExplorerTileHighlightBlueImage,
-      imageElementRef: useRef<HTMLImageElement>(null)
-    },
-    cyan: {
+
+  const features = [
+    {
+      description: "Armos",
+      featureState: useRecoilState(overworldMapExplorerFeatureAtom(JsonOverworldFeatureType.armos)),
       image: overworldMapExplorerTileHighlightCyanImage,
-      imageElementRef: useRef<HTMLImageElement>(null)
+      imageElementRef: useRef<HTMLImageElement>(null),
+      type: JsonOverworldFeatureType.armos
     },
-    gray: {
-      image: overworldMapExplorerTileHighlightGrayImage,
-      imageElementRef: useRef<HTMLImageElement>(null)
+    {
+      description: "Bomb",
+      featureState: useRecoilState(overworldMapExplorerFeatureAtom(JsonOverworldFeatureType.bomb)),
+      image: overworldMapExplorerTileHighlightBlueImage,
+      imageElementRef: useRef<HTMLImageElement>(null),
+      type: JsonOverworldFeatureType.bomb
     },
-    green: {
-      image: overworldMapExplorerTileHighlightGreenImage,
-      imageElementRef: useRef<HTMLImageElement>(null)
-    },
-    magenta: {
-      image: overworldMapExplorerTileHighlightMagentaImage,
-      imageElementRef: useRef<HTMLImageElement>(null)
-    },
-    orange: {
-      image: overworldMapExplorerTileHighlightOrangeImage,
-      imageElementRef: useRef<HTMLImageElement>(null)
-    },
-    red: {
+    {
+      description: "Candle",
+      featureState: useRecoilState(overworldMapExplorerFeatureAtom(JsonOverworldFeatureType.candle)),
       image: overworldMapExplorerTileHighlightRedImage,
-      imageElementRef: useRef<HTMLImageElement>(null)
+      imageElementRef: useRef<HTMLImageElement>(null),
+      type: JsonOverworldFeatureType.candle
     },
-    white: {
+    {
+      description: "Dock",
+      featureState: useRecoilState(overworldMapExplorerFeatureAtom(JsonOverworldFeatureType.dock)),
+      image: overworldMapExplorerTileHighlightOrangeImage,
+      imageElementRef: useRef<HTMLImageElement>(null),
+      type: JsonOverworldFeatureType.dock
+    },
+    {
+      description: "Grave Marker",
+      featureState: useRecoilState(overworldMapExplorerFeatureAtom(JsonOverworldFeatureType.graveMarker)),
+      image: overworldMapExplorerTileHighlightGrayImage,
+      imageElementRef: useRef<HTMLImageElement>(null),
+      type: JsonOverworldFeatureType.graveMarker
+    },
+    {
+      description: "Item",
+      featureState: useRecoilState(overworldMapExplorerFeatureAtom(JsonOverworldFeatureType.item)),
+      image: overworldMapExplorerTileHighlightGreenImage,
+      imageElementRef: useRef<HTMLImageElement>(null),
+      type: JsonOverworldFeatureType.item
+    },
+    {
+      description: "Open",
+      featureState: useRecoilState(overworldMapExplorerFeatureAtom(JsonOverworldFeatureType.open)),
       image: overworldMapExplorerTileHighlightWhiteImage,
-      imageElementRef: useRef<HTMLImageElement>(null)
+      imageElementRef: useRef<HTMLImageElement>(null),
+      type: JsonOverworldFeatureType.open
     },
-    yellow: {
+    {
+      description: "Power Bracelet",
+      featureState: useRecoilState(overworldMapExplorerFeatureAtom(JsonOverworldFeatureType.powerBracelet)),
+      image: overworldMapExplorerTileHighlightMagentaImage,
+      imageElementRef: useRef<HTMLImageElement>(null),
+      type: JsonOverworldFeatureType.powerBracelet
+    },
+    {
+      description: "Recorder",
+      featureState: useRecoilState(overworldMapExplorerFeatureAtom(JsonOverworldFeatureType.recorder)),
       image: overworldMapExplorerTileHighlightYellowImage,
-      imageElementRef: useRef<HTMLImageElement>(null)
+      imageElementRef: useRef<HTMLImageElement>(null),
+      type: JsonOverworldFeatureType.recorder
     }
-  };
-  const tileHighlightImageElementRefsByFeatureType: Record<string, React.RefObject<HTMLImageElement>> = {
-    armos: tileHighlightImages.cyan.imageElementRef,
-    bomb: tileHighlightImages.blue.imageElementRef,
-    candle: tileHighlightImages.red.imageElementRef,
-    graveMarker: tileHighlightImages.gray.imageElementRef,
-    item: tileHighlightImages.green.imageElementRef,
-    open: tileHighlightImages.white.imageElementRef,
-    powerBracelet: tileHighlightImages.magenta.imageElementRef,
-    raft: tileHighlightImages.orange.imageElementRef,
-    recorder: tileHighlightImages.yellow.imageElementRef
-  } as const;
-  const overworldMapImagesByQuest: Record<string, string> = {
+  ];
+
+  const mapImagesByQuest: Record<string, string> = {
     first: zelda1OverworldMapFirstQuestImage,
     second: zelda1OverworldMapSecondQuestImage,
     mixed: zelda1OverworldMapMixedQuestImage
   } as const;
 
-  const tileHighlightImageElements = Object.entries(tileHighlightImages).map(([key, value]) => {
+  const featureImageElements = features.map((a) => {
     return (
       <img
-        key={key}
-        className={`OverworldMapExplorerPage-TileHighlightImage OverworldMapExplorerPage-TileHighlightImage_${key}`}
-        src={value.image}
-        ref={value.imageElementRef}
+        key={a.type}
+        className={`OverworldMapExplorerPage-FeatureImage OverworldMapExplorerPage-FeatureImage_${a.type}`}
+        src={a.image}
+        ref={a.imageElementRef}
       />
     );
   });
 
-  const defaultQuest: string = questHelper.quests[0].key;
+  const featureToggleButtons = features
+    .sort((a, b) => a.type.localeCompare(b.type))
+    .map((a) => {
+      const [featureState, setFeatureState] = a.featureState;
 
-  const questOptions = questHelper.quests.map((quest) => (
-    <option key={quest.key} value={quest.key}>
-      {quest.description}
+      function onToggledChange(toggled: boolean) {
+        setFeatureState({ ...featureState, visible: toggled });
+      }
+
+      return (
+        <ToggleButton
+          key={a.type}
+          className="OverworldMapExplorerPage-FeatureOption"
+          toggledClassName="OverworldMapExplorerPage-FeatureOption_visible"
+          defaultToggled={featureState.visible}
+          onToggledChange={onToggledChange}
+        >
+          <img key={a.type} className="OverworldMapExplorerPage-FeatureOptionImage" src={a.image} />
+          {a.description}
+        </ToggleButton>
+      );
+    });
+
+  const defaultQuest: string = questHelper.quests[0].key;
+  const questOptions = questHelper.quests.map((a) => (
+    <option key={a.key} value={a.key}>
+      {a.description}
     </option>
   ));
-
   const [quest, setQuest] = useState(defaultQuest);
-  const questImageElement = overworldMapImagesByQuest[quest];
+  const questImageElement = mapImagesByQuest[quest];
 
   useEffect(() => {
     const canvasContext = canvasRef.current?.getContext("2d");
@@ -126,26 +168,32 @@ const MapExplorerPage: React.FC = () => {
 
     canvasContext.clearRect(0, 0, overworldMapHelper.mapSizeInPixels.width, overworldMapHelper.mapSizeInPixels.height);
 
-    features
-      .filter((feature) => !isNil(feature.tile) && feature.quests.includes(quest))
-      .forEach((feature) => {
-        const imageElementRef = tileHighlightImageElementRefsByFeatureType[feature.type];
+    jsonOverworldFeatures
+      .filter((a) => !isNil(a.tile) && a.quests.includes(quest))
+      .forEach((overworldFeatureData) => {
+        const feature = features.find((a) => a.type === overworldFeatureData.type);
 
-        if (isNil(imageElementRef)) {
-          console.log(feature.type);
+        if (isNil(feature)) {
+          throw new Error(`Unexpected overworld feature type ${overworldFeatureData.type}`);
         }
 
-        const imageElement = tileHighlightImageElementRefsByFeatureType[feature.type].current;
+        const [featureState] = feature.featureState;
 
-        if (isNil(imageElement)) {
+        if (!featureState.visible) {
           return;
         }
 
+        const imageElement = feature.imageElementRef.current;
+
+        if (isNil(imageElement)) {
+          throw new Error(`Overworld feature data ${overworldFeatureData.type} image ref not found`);
+        }
+
         const location = overworldMapHelper.mapTileCoordinateToAbsolutePixelCoordinates(
-          feature.screen.x,
-          feature.screen.y,
-          feature.tile!.x,
-          feature.tile!.y
+          overworldFeatureData.screen.x,
+          overworldFeatureData.screen.y,
+          overworldFeatureData.tile!.x,
+          overworldFeatureData.tile!.y
         );
 
         canvasContext.drawImage(
@@ -163,10 +211,16 @@ const MapExplorerPage: React.FC = () => {
         <Nav className="OverworldMapExplorerPage-Nav" />
         <main className="OverworldMapExplorerPage-Content">
           <div className="OverworldMapExplorerPage-Options">
-            <label htmlFor="quest">Quest: </label>
-            <select id="quest" onChange={(event) => setQuest(event.target.value)} defaultValue={defaultQuest}>
-              {questOptions}
-            </select>
+            <div>
+              <label htmlFor="quest">Quest: </label>
+              <select id="quest" onChange={(event) => setQuest(event.target.value)} defaultValue={defaultQuest}>
+                {questOptions}
+              </select>
+            </div>
+            <div className="OverworldMapExplorerPage-FeaturesOptions">
+              Features (toggle to show/hide):
+              {featureToggleButtons}
+            </div>
           </div>
           <div className="OverworldMapExplorerPage-MapContainer">
             <img className="OverworldMapExplorerPage-OverworldMapImage" src={questImageElement} />
@@ -176,7 +230,7 @@ const MapExplorerPage: React.FC = () => {
               width={overworldMapHelper.mapSizeInPixels.width}
               height={overworldMapHelper.mapSizeInPixels.height}
             />
-            {tileHighlightImageElements}
+            {featureImageElements}
           </div>
         </main>
       </div>
@@ -184,4 +238,4 @@ const MapExplorerPage: React.FC = () => {
   );
 };
 
-export default MapExplorerPage;
+export default OverworldMapExplorerPage;

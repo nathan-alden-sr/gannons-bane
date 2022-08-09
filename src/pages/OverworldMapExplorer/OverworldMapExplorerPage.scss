@@ -12,11 +12,39 @@
   }
 
   &-Options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     padding: 0.5rem;
   }
 
+  &-FeaturesOptions {
+    display: flex;
+    gap: 1rem;
+  }
+
+  &-FeatureOption {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: 0.25rem;
+
+    &:not(&_visible) {
+      opacity: 0.5;
+    }
+
+    &_visible {
+      opacity: 1;
+    }
+  }
+
+  &-FeatureOptionImage {
+    height: var(--text-icon-height);
+    width: var(--text-icon-width);
+  }
+
   &-MapContainer {
-    aspect-ratio: 4096 / 1408;
+    aspect-ratio: var(--overworld-map-width-in-pixels) / var(--overworld-map-height-in-pixels);
     position: relative;
     width: 100%;
   }
@@ -28,7 +56,7 @@
     z-index: 0;
   }
 
-  &-TileHighlightImage {
+  &-FeatureImage {
     display: none;
   }
 
