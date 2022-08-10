@@ -1,5 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import _ from "lodash-es";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
@@ -10,7 +11,13 @@ if (process.env.NODE_ENV === "production") {
   console.debug = () => {};
 }
 
-const root = createRoot(document.getElementById("root")!);
+const container = document.getElementById("root");
+
+if (_.isNil(container)) {
+  throw new Error("Root element not found");
+}
+
+const root = createRoot(container);
 
 root.render(
   <React.StrictMode>

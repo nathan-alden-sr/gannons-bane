@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import { buildHomeRouteUrl, buildOverworldMapExplorerRouteUrl } from "../../helpers/RouteHelper";
 import zelda1GannonTriforceYellow from "../../assets/images/zelda-1-gannon-triforce-yellow.png";
@@ -21,4 +22,4 @@ const Nav: React.FC<NavElementProps> = (props: NavElementProps) => {
   );
 };
 
-export default Nav;
+export default React.memo(Nav);

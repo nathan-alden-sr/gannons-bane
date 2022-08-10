@@ -1,7 +1,6 @@
 .OverworldMapExplorerPage {
   display: grid;
   grid: "nav" min-content "content" auto;
-  min-height: 100vh;
 
   &-Nav {
     grid-area: nav;

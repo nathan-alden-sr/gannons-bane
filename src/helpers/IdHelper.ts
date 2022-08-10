@@ -1,6 +1,6 @@
 import { customAlphabet, nanoid } from "nanoid";
 import { alphanumeric } from "nanoid-dictionary";
-import { isNil } from "lodash-es";
+import _ from "lodash-es";
 
 export function generateId() {
   return nanoid();
@@ -16,7 +16,7 @@ export function generateEntityId() {
 }
 
 export function isValidEntityId(id?: string | null, allowUndefined: boolean = false) {
-  const isIdDefined = !isNil(id);
+  const isIdDefined = !_.isNil(id);
 
   return (!isIdDefined && allowUndefined) || (isIdDefined && entityIdRegExp.test(id));
 }

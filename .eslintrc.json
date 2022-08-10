@@ -149,7 +149,7 @@
     "prefer-template": "error",
     "quotes": ["error", "double"],
     "require-atomic-updates": "error",
-    "require-await": "error",
+    "require-await": "off",
     "require-unicode-regexp": "error",
     "spaced-comment": "error",
     "strict": "error",

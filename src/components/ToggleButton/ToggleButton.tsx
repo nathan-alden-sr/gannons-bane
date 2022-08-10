@@ -1,40 +1,43 @@
 import React, { useState } from "react";
 import classNames from "classnames";
-import { isNil } from "lodash-es";
+import _ from "lodash-es";
 
 type ButtonElementProps = JSX.IntrinsicElements["button"];
 
 export interface ToggleButtonProps extends ButtonElementProps {
-  defaultToggled?: boolean | null;
+  toggled?: boolean | null;
   toggledClassName?: string | null;
   onToggledChange?: (toggled: boolean) => void;
 }
 
-export interface ToggleButtonState {
-  toggled: boolean;
-}
-
 const ToggleButton: React.FC<ToggleButtonProps> = (props: ToggleButtonProps) => {
-  const [toggled, setToggled] = useState(props.defaultToggled ?? false);
+  function calculateClassNames(isToggled: boolean) {
+    return classNames(
+      "ToggleButton",
+      props.className,
+      isToggled && !_.isNil(props.toggledClassName) ? props.toggledClassName : null
+    );
+  }
 
-  const buttonClassNames = classNames(
-    "ToggleButton",
-    props.className,
-    toggled && !isNil(props.toggledClassName) ? props.toggledClassName : null
-  );
+  const [toggled, setToggled] = useState(props.toggled === true);
+  const [className, setClassName] = useState(calculateClassNames(props.toggled === true));
 
-  function onClick() {
+  function handleClick() {
     const newToggled = !toggled;
 
     setToggled(newToggled);
 
-    if (!isNil(props.onToggledChange)) {
+    if (!_.isNil(props.toggledClassName)) {
+      setClassName(calculateClassNames(newToggled));
+    }
+
+    if (!_.isNil(props.onToggledChange)) {
       props.onToggledChange(newToggled);
     }
   }
 
   return (
-    <button className={buttonClassNames} onClick={onClick}>
+    <button className={className} onClick={handleClick}>
       {props.children}
     </button>
   );

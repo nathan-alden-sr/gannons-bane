@@ -1,3 +1,4 @@
+import React from "react";
 import "./Button.scss";
 
 export const enum ButtonTheme {
@@ -18,4 +19,4 @@ const Button: React.FC<ButtonProps> = (props: ButtonProps) => {
   );
 };
 
-export default Button;
+export default React.memo(Button);

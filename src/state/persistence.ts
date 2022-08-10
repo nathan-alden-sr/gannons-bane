@@ -1,6 +1,6 @@
 import localForage from "localforage";
-import { atom, AtomEffect, Loadable, RecoilValue, WrappedValue } from "recoil";
-import { isNil } from "lodash-es";
+import { atom, AtomEffect, DefaultValue, Loadable, RecoilValue, WrappedValue } from "recoil";
+import _ from "lodash";
 
 // Based on sample code at https://recoiljs.org/docs/guides/atom-effects#asynchronous-setself
 
@@ -23,20 +23,10 @@ type TItem =
   | String;
 
 export function localForageEffect<T extends TItem>(key: string) {
-  const effect: AtomEffect<T> = ({ trigger, setSelf, onSet }) => {
-    const persistedValue = async () => {
-      const value = await localForage.getItem<T>(key);
+  const effect: AtomEffect<T> = ({ setSelf, onSet }) => {
+    setSelf(localForage.getItem<T>(key).then((itemValue) => (!_.isNil(itemValue) ? itemValue : new DefaultValue())));
 
-      if (!isNil(value)) {
-        setSelf(value);
-      }
-    };
-
-    if (trigger === "get") {
-      persistedValue();
-    }
-
-    onSet((newValue, _, isReset) => {
+    onSet((newValue, _oldValue, isReset) => {
       if (isReset) {
         localForage.removeItem(key);
       } else {
