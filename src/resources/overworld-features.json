@@ -36,7 +36,7 @@
   { "type": "powerBracelet", "screen": { "x": 3, "y": 2 }, "tile": { "x": 4, "y": 5 }, "quests": ["first", "second", "mixed"], "powerBraceletPushTile": { "x": 3, "y": 5 }},
   { "type": "armos", "screen": { "x": 4, "y": 2 }, "tile": { "x": 14, "y": 4 }, "quests": ["first", "second", "mixed"], "powerBraceletPushTile": null },
   { "type": "open", "screen": { "x": 5, "y": 2 }, "tile": { "x": 10, "y": 1 }, "quests": ["first", "second", "mixed"], "powerBraceletPushTile": null },
-  { "type": "open", "screen": { "x": 6, "y": 2 }, "tile": { "x": 3, "y": 1 }, "quests": ["first", "second", "mixed"], "powerBraceletPushTile": null },
+  { "type": "bomb", "screen": { "x": 6, "y": 2 }, "tile": { "x": 3, "y": 1 }, "quests": ["first", "second", "mixed"], "powerBraceletPushTile": null },
   { "type": "bomb", "screen": { "x": 7, "y": 2 }, "tile": { "x": 14, "y": 1 }, "quests": ["first", "mixed"], "powerBraceletPushTile": null },
   { "type": "candle", "screen": { "x": 8, "y": 2 }, "tile": { "x": 13, "y": 6 }, "quests": ["first", "second", "mixed"], "powerBraceletPushTile": null },
   { "type": "recorder", "screen": { "x": 9, "y": 2 }, "tile": { "x": 6, "y": 5 }, "quests": ["second", "mixed"], "powerBraceletPushTile": null },
